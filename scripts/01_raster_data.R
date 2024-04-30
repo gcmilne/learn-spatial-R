@@ -4,7 +4,7 @@
 
 # 0. Session details ----
 
-# Learn how to use raster data and make spatial plots, following this tutorial:
+# Intro to learn how to use raster data, following this tutorial:
 # https://datacarpentry.org/r-raster-vector-geospatial/01-raster-structure.html#:~:text=The%20GeoTIFF%20format%20contains%20a,this%20before%20importing%20your%20data
 # R version 4.3.1 (2023-06-16)
 # Running under: Windows 11 x64 (build 22631)
