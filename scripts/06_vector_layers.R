@@ -4,8 +4,9 @@
 
 # 0. Session details ----
 
-# Introduction to working with point, line & polygon vector data, following this tutorial:
+# Introduction to working with point, line & polygon vector data, following these tutorials:
 # https://datacarpentry.org/r-raster-vector-geospatial/06-vector-open-shapefile-in-r.html
+# https://datacarpentry.org/r-raster-vector-geospatial/07-vector-shapefile-attributes-in-r.html
 # R version 4.3.1 (2023-06-16)
 # Running under: Windows 11 x64 (build 22631)
 
@@ -60,3 +61,39 @@ ggplot() +
   geom_sf(data = towers, col = "red") + 
   theme_classic()
   
+# 6. Vector attributes ----
+
+# NB This section is now following this page of the tutorial:
+# https://datacarpentry.org/r-raster-vector-geospatial/07-vector-shapefile-attributes-in-r.html
+
+# Number of attributes can be checked with ncol()
+roads %>% ncol()
+
+# The names of individual attributes can be found with names()
+roads %>% names()
+
+# Filter by a particular type: here, features of type `footpath`
+roads %>%
+  filter(TYPE == "footpath") %>% 
+  nrow()  # 2
+  
+# Plot footpaths & colour by second feature: object ID
+roads %>%
+  filter(TYPE == "footpath") %>% 
+  ggplot() + 
+  geom_sf(aes(col = factor(OBJECTID))) +
+  ggtitle("Footpaths in the NEON Harvard Forest Field Site") + 
+  coord_sf()
+
+# We can do the same for boardwalks
+roads %>%
+  filter(TYPE == "boardwalk") %>% 
+  ggplot() +
+  geom_sf()
+
+# And stone walls
+roads %>%
+  filter(TYPE == "stone wall") %>% 
+  ggplot() +
+  geom_sf(aes(col = factor(OBJECTID)))
+
